@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require 'dirwait'
+
+if ARGV.empty?
+  $stderr.puts "Usage: dirwait <path>"
+  exit
+end
+
+path = ARGV.shift
+fail ArgumentError, "No path specified" unless path
+
+watch = DirWait::Watch.new(path)
+watch.start
